@@ -266,7 +266,7 @@ function Hero() {
 function Metrics() {
   return (
     <section style={{ background:t.dune, borderTop:`1px solid rgba(255,255,255,.06)` }}>
-      <div style={{ display:'grid', gridTemplateColumns:'repeat(auto-fill,minmax(145px,1fr))',
+      <div style={{ display:'grid', gridTemplateColumns:'repeat(7,1fr)',
         gap:1, background:'rgba(255,255,255,.08)' }}>
         {metrics.map(({n,l}) => (
           <div key={n} style={{ padding:'28px 16px', textAlign:'center',

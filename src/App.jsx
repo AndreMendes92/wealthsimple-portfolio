@@ -1,4 +1,5 @@
 import { useState, useEffect } from 'react'
+import Showcase from './Showcase'
 
 /* ── STYLE TOKENS ── */
 const t = {
@@ -520,6 +521,7 @@ export default function App() {
       <Hero />
       <Metrics />
       <AiSection />
+      <Showcase />
       <Career />
       <Alignment />
       <Stack />

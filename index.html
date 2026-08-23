@@ -61,8 +61,8 @@
   .rule{width:32px;height:3px;background:var(--accent);border-radius:1px;margin-bottom:32px;}
 
   /* METRICS STRIP */
-  .metrics-strip{display:grid;grid-template-columns:repeat(auto-fill,minmax(145px,1fr));gap:1px;background:rgba(255,255,255,.08);}
-  .mc{padding:28px 20px;text-align:center;background:rgba(255,255,255,.03);}
+  .metrics-strip{display:grid;grid-template-columns:repeat(auto-fill,minmax(145px,1fr));gap:1px;background:rgba(255,255,255,.08);text-align:center;}
+  .mc{padding:28px 20px;text-align:center;background:rgba(255,255,255,.03);display:flex;flex-direction:column;align-items:center;justify-content:center;}
   .mc-n{font-size:1.85rem;font-weight:800;color:var(--white);letter-spacing:-.5px;}
   .mc-l{color:rgba(255,255,255,.45);font-size:.74rem;margin-top:5px;line-height:1.4;}
 
@@ -202,7 +202,7 @@
 
 <!-- METRICS -->
 <section class="sec sec-dark" style="padding:0;">
-  <div class="metrics-strip" style="justify-items:center;">
+  <div class="metrics-strip">
     <div class="mc"><div class="mc-n">10+</div><div class="mc-l">Years WFM architecture &amp; operations</div></div>
     <div class="mc"><div class="mc-n">2 yrs</div><div class="mc-l">Production AI — LLM agents, GPT-4 Vision, Claude Sonnet 4.6 &amp; Opus 4.8 with MCP connectors</div></div>
     <div class="mc"><div class="mc-n">5+ yrs</div><div class="mc-l">Scripting &amp; process automation — PowerShell, OCR, Power Automate, bot pipelines</div></div>

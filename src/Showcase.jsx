@@ -8,11 +8,12 @@ const t = {
 }
 
 const TABS = [
-  { id:'rta',       label:'🤖 RTA Bot' },
-  { id:'forecast',  label:'📈 Forecast Tool' },
-  { id:'powerbi',   label:'📊 Power BI' },
-  { id:'shedula',   label:'🚀 Shedula.io' },
-  { id:'hootsuite', label:'💬 Hootsuite Bot' },
+  { id:'rta',         label:'🤖 RTA Bot' },
+  { id:'superforecast', label:'📡 Super Forecaster' },
+  { id:'forecast',    label:'📈 Shedula Forecast' },
+  { id:'powerbi',     label:'📊 Power BI' },
+  { id:'shedula',     label:'🚀 Shedula.io' },
+  { id:'hootsuite',   label:'💬 Hootsuite Bot' },
 ]
 
 /* ── shared sub-components ── */
@@ -149,29 +150,136 @@ function RtaPanel({ active }) {
   )
 }
 
+/* ── SUPER FORECASTER ── */
+function SuperForecastPanel() {
+  return (
+    <div>
+      <p style={{ fontSize:'.88rem', color:t.duneMid, lineHeight:1.7, maxWidth:700 }}>
+        Standalone Public Tool · In Development · Python + Streamlit + Statistics Canada API · Multi-model comparison with real time-series data
+      </p>
+      <Rule />
+
+      <div style={{ background:t.creamDark, borderLeft:`3px solid ${t.accent}`, padding:'18px 24px',
+        borderRadius:'0 4px 4px 0', marginBottom:28 }}>
+        <p style={{ fontSize:'.88rem', color:t.dune, lineHeight:1.8 }}>
+          A standalone public forecasting tool built for analysts, researchers, and planners who need to
+          compare multiple forecasting methods against <strong>real StatCan time-series data</strong> —
+          not dummy data. Pull any vector ID from Statistics Canada's free API, run all four models
+          simultaneously, and visually compare their projections side by side.
+        </p>
+      </div>
+
+      <SectionLabel>Data Flow & Architecture</SectionLabel>
+      <Flow nodes={[
+        { icon:'🗄️', label:'StatCan API', sub:'Vector ID input\nPulls real monthly\ntime-series data', color:t.blue, pulse:true },
+        { icon:'📊', label:'60mo History', sub:'Last N months\nloaded into\nanalysis engine', color:t.blue },
+        { icon:'🔍', label:'Signal Detection', sub:'Trend slope\nAutocorr lag 7\nCoeff. of variation', color:t.accent },
+        { icon:'🧠', label:'Method Selector', sub:'Recommends best\nwith plain-English\nexplanation', color:t.accent, pulse:true },
+        { icon:'📐', label:'4 Models Run', sub:'Simultaneously\ncompared on\nsame dataset', color:t.green },
+        { icon:'📈', label:'Visual Compare', sub:'Historical + all\nforecast lines\nside by side', color:t.purple, pulse:true },
+      ]} />
+
+      <SectionLabel>What Makes It Different</SectionLabel>
+      <DetailGrid cards={[
+        { title:'📡 Real StatCan Data', items:[
+          'Pulls any vector ID from Statistics Canada free API',
+          'Monthly time series — seasonality = 12-month cycle',
+          'Up to 60 months of real historical data',
+          'Example: vector 111955442 — labour market data',
+          '"Where do I find vector IDs?" help built in',
+        ]},
+        { title:'📐 4 Models, Side by Side', items:[
+          'Holt-Winters — trend + seasonality (recommended for most)',
+          'ARIMA — statistical time series with trend',
+          'Seasonal Decomposition — strong cycles, no trend',
+          'Moving Average — stable baseline, no patterns',
+          'All four projected on the same chart simultaneously',
+        ]},
+        { title:'⚙️ Smart Settings', items:[
+          'Periods to forecast: slider (e.g. 6 months ahead)',
+          'Factor in seasonality toggle — on/off',
+          'Pick any combination of methods to compare',
+          'Dummy data mode for demo without API key',
+          'Upload your own CSV as a third data source',
+        ]},
+        { title:'📊 Output Layer', items:[
+          'Historical line (blue) + forecast lines per model',
+          'Colour-coded legend per method',
+          'Method recommendation with reasoning shown',
+          '3 data insights: trend direction, cycles, variability',
+          'Built in Streamlit — shareable public URL',
+        ]},
+      ]} />
+
+      <MetricsRow items={[
+        ['4','Forecasting methods\ncompared simultaneously'],
+        ['60mo','Real StatCan history\npullable per vector'],
+        ['Live','Statistics Canada\nfree public API'],
+        ['Public','Shareable Streamlit\napp — in development'],
+      ]} />
+    </div>
+  )
+}
+
+/* ── SHEDULA FORECAST ── */
 function ForecastPanel() {
   return (
     <div>
       <p style={{ fontSize:'.88rem', color:t.duneMid, lineHeight:1.7, maxWidth:700 }}>
-        Shedula.io + Standalone Streamlit App · Python + StatCan API + Holt-Winters / ARIMA / Seasonal Decomp
+        Shedula.io · Embedded WFM Forecasting Engine · Growth+ Plan · Python + FastAPI + Erlang C → staffing requirements
       </p>
       <Rule />
-      <SectionLabel>Forecasting Pipeline</SectionLabel>
+
+      <div style={{ background:t.creamDark, borderLeft:`3px solid ${t.accent}`, padding:'18px 24px',
+        borderRadius:'0 4px 4px 0', marginBottom:28 }}>
+        <p style={{ fontSize:'.88rem', color:t.dune, lineHeight:1.8 }}>
+          Unlike the Super Forecaster (which is a standalone analysis tool), this forecasting engine is
+          <strong> embedded inside Shedula.io</strong> and purpose-built for WFM. It takes historical
+          interval-level call volume data, detects the best statistical method automatically, runs the
+          forecast, then <strong>converts output directly into staffing requirements</strong> via Erlang C —
+          writing the results into the scheduling engine with no manual steps.
+        </p>
+      </div>
+
+      <SectionLabel>WFM Forecasting Pipeline</SectionLabel>
       <Flow nodes={[
-        { icon:'📂', label:'Data Ingestion', sub:'CSV / StatCan API\nor dummy data', color:t.accent, pulse:true },
+        { icon:'📂', label:'CSV Upload', sub:'Per-interval format\ndate/channel/volume\n/AHT seconds', color:t.accent, pulse:true },
         { icon:'🔍', label:'Analysis Engine', sub:'Linear regression\nAutocorr lag 7\nCoeff. of variation', color:t.accent },
-        { icon:'🧠', label:'Smart Detection', sub:'Picks best method\nplain-English reason', color:t.blue, pulse:true },
-        { icon:'📐', label:'Model Runs', sub:'Holt-Winters\nARIMA / Seasonal\nMoving Average', color:t.blue },
-        { icon:'📅', label:'Erlang C', sub:'Volume → agents\nper 30-min interval', color:t.green },
-        { icon:'📊', label:'Staffing Output', sub:'3/6/12 month\nwritten to DB', color:t.purple, pulse:true },
+        { icon:'🧠', label:'Auto-Detection', sub:'Picks best method\nplain-English reason\n+ 3 data insights', color:t.blue, pulse:true },
+        { icon:'📐', label:'Forecast Runs', sub:'3 / 6 / 12 month\nhorizons\nfull auto-apply', color:t.blue },
+        { icon:'📅', label:'Erlang C', sub:'Volume × AHT\n÷ 1800 → agents\nper interval', color:t.green },
+        { icon:'💾', label:'DB Write', sub:'coverage_requirements\nper queue replaced\nscheduling-ready', color:t.purple, pulse:true },
       ]} />
+
       <DetailGrid cards={[
         { title:'📈 Holt-Winters', items:['Trend detected (slope > threshold)','AND weekly seasonality confirmed (autocorr lag 7)','Best fit for most contact centres','Handles both trend + cyclical patterns'] },
         { title:'📉 ARIMA', items:['Clear trend present','No significant weekly seasonality','Statistical time series model','Used for monotonic growth/decline'] },
-        { title:'🌊 Seasonal Decomp', items:['Strong weekly pattern detected','No significant trend slope','Separates seasonal from residual','Best for stable, cyclical volumes'] },
-        { title:'📏 Moving Average', items:['Stable volume — low variance (CV)','No trend, no seasonality','Simple flat-projection baseline','Last 4 periods average projected forward'] },
+        { title:'🌊 Seasonal Decomp', items:['Strong weekly pattern — no trend','Separates seasonal from residual noise','Best for stable, cyclical contact centre volumes'] },
+        { title:'📏 Moving Average', items:['Stable volume — low coefficient of variation','No trend, no seasonality signal','Flat-projection of last 4 periods','Simple baseline for comparison'] },
       ]} />
-      <MetricsRow items={[['60→90%','Forecast accuracy\nCoast Capital · 90 days'],['4','Methods compared\nsimultaneously'],['12mo','Max forecast\nhorizon'],['Live','StatCan API pull\nreal-time data']]} />
+
+      <SectionLabel>Persistent History & Apply-to-Staffing</SectionLabel>
+      <DetailGrid cards={[
+        { title:'🕐 Forecast History', items:[
+          'Every forecast auto-saved to forecasts table',
+          'History pills at top — click to reload any past run',
+          '× to delete, "+ New forecast" to run fresh',
+          'Page loads most recent forecast on mount',
+        ]},
+        { title:'⚡ Apply to Staffing', items:[
+          'One click → writes agents_required per interval',
+          'Replaces existing coverage_requirements for queue',
+          'Scheduling engine immediately picks up new reqs',
+          'Full horizon (3/6/12mo) applied in one operation',
+        ]},
+      ]} />
+
+      <MetricsRow items={[
+        ['60→90%','Forecast accuracy\nCoast Capital · 90 days'],
+        ['4','Methods auto-detected\nand compared'],
+        ['12mo','Max forecast\nhorizon'],
+        ['0 clicks','From forecast →\nstaffing requirements'],
+      ]} />
     </div>
   )
 }
@@ -307,7 +415,7 @@ function HootsuitePanel() {
 export default function Showcase() {
   const [active, setActive] = useState('rta')
 
-  const panels = { rta:<RtaPanel active={active==='rta'} />, forecast:<ForecastPanel />, powerbi:<PowerBIPanel />, shedula:<ShedulaPanel />, hootsuite:<HootsuitePanel /> }
+  const panels = { rta:<RtaPanel active={active==='rta'} />, superforecast:<SuperForecastPanel />, forecast:<ForecastPanel />, powerbi:<PowerBIPanel />, shedula:<ShedulaPanel />, hootsuite:<HootsuitePanel /> }
 
   return (
     <section style={{ background:t.bg, borderTop:`1px solid ${t.border}` }}>

@@ -1,13 +1,914 @@
 <!DOCTYPE html>
 <html lang="en">
-  <head>
-    <meta charset="UTF-8" />
-    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-    <title>Andre Mendes — Lead, WFM Platform & Automation · Wealthsimple</title>
-    <meta name="description" content="Andre Mendes — WFM Architect & AI Automation Lead. Interview portfolio for Wealthsimple Lead, WFM Platform & Automation role." />
-  </head>
-  <body>
-    <div id="root"></div>
-    <script type="module" src="/src/main.jsx"></script>
-  </body>
+<head>
+<meta charset="UTF-8"/>
+<meta name="viewport" content="width=device-width,initial-scale=1.0"/>
+<title>Andre Mendes — Lead, WFM Platform & Automation · Wealthsimple</title>
+<style>
+*{margin:0;padding:0;box-sizing:border-box;}
+:root{
+  --dune:#32302F;--dune-mid:#5a5856;--dune-light:#8a8785;
+  --cream:#f5f0eb;--cream-dark:#ede7df;--sand:#d4cbc0;
+  --white:#fff;--black:#0d0b0a;--accent:#c8763a;
+  --border:#e8e3dd;--bg:#faf8f5;
+  --green:#2ea052;--blue:#2563eb;--purple:#7c3aed;--red:#dc2626;
+}
+body{font-family:'Segoe UI',system-ui,sans-serif;color:var(--dune);background:var(--white);line-height:1.6;}
+a{color:inherit;text-decoration:none;}
+button{cursor:pointer;font-family:inherit;}
+code{background:var(--cream);padding:1px 5px;border-radius:2px;font-size:.82em;}
+
+/* NAV */
+nav{background:var(--white);border-bottom:1px solid var(--border);padding:0 7%;height:58px;
+  display:flex;align-items:center;justify-content:space-between;position:sticky;top:0;z-index:100;
+  transition:box-shadow .3s;}
+nav.scrolled{box-shadow:0 2px 12px rgba(0,0,0,.06);}
+.nav-brand{display:flex;align-items:center;gap:14px;}
+.ws-word{font-size:1.15rem;font-weight:800;color:var(--dune);letter-spacing:-.4px;}
+.nav-sep{width:1px;height:20px;background:var(--border);}
+.nav-sub{font-size:.78rem;color:var(--dune-light);}
+.nav-right{display:flex;align-items:center;gap:28px;}
+.nav-right a{font-size:.8rem;color:var(--dune-mid);font-weight:500;transition:color .2s;}
+.nav-right a:hover{color:var(--dune);}
+.nav-badge{background:var(--dune);color:var(--white);font-size:.72rem;font-weight:700;
+  padding:5px 14px;border-radius:2px;letter-spacing:.3px;}
+
+/* HERO */
+.hero{background:var(--dune);padding:72px 7% 68px;position:relative;overflow:hidden;}
+.hero-inner{display:flex;gap:56px;align-items:center;flex-wrap:wrap;}
+.hero-photo img{width:108px;height:108px;border-radius:50%;object-fit:cover;
+  border:2px solid rgba(255,255,255,.15);}
+.hero-eyebrow{font-size:.72rem;font-weight:700;letter-spacing:2px;text-transform:uppercase;
+  color:var(--sand);margin-bottom:16px;}
+.hero h1{font-size:clamp(2rem,4vw,3rem);font-weight:800;color:var(--white);
+  line-height:1.05;letter-spacing:-.5px;margin-bottom:10px;}
+.hero-sub{color:rgba(255,255,255,.6);font-size:.95rem;line-height:1.75;max-width:500px;margin-bottom:22px;}
+.hero-contact{display:flex;gap:20px;flex-wrap:wrap;}
+.hero-contact a,.hero-contact span{color:rgba(255,255,255,.45);font-size:.8rem;transition:color .2s;}
+.hero-contact a:hover{color:rgba(255,255,255,.85);}
+.hero-right{flex-shrink:0;}
+.role-card{border:1px solid rgba(255,255,255,.12);border-radius:4px;padding:24px 28px;}
+.role-card .rc-lbl{font-size:.65rem;font-weight:700;letter-spacing:1.5px;text-transform:uppercase;
+  color:rgba(255,255,255,.35);margin-bottom:10px;}
+.role-card .rc-role{font-size:1rem;font-weight:800;color:var(--white);line-height:1.4;}
+.role-card .rc-org{font-size:.78rem;color:rgba(255,255,255,.35);margin-top:6px;}
+
+/* METRICS */
+.metrics-strip{display:grid;grid-template-columns:repeat(7,1fr);gap:1px;background:rgba(255,255,255,.08);}
+.mc{padding:28px 16px;text-align:center;background:rgba(20,18,18,.6);
+  display:flex;flex-direction:column;align-items:center;justify-content:center;}
+.mc-n{font-size:1.85rem;font-weight:800;color:var(--white);letter-spacing:-.5px;line-height:1.1;}
+.mc-l{color:rgba(255,255,255,.45);font-size:.72rem;margin-top:5px;line-height:1.4;}
+
+/* SECTIONS */
+.sec{padding:64px 7%;}
+.sec-bg{background:var(--bg);}
+.sec-cream{background:var(--cream);}
+.sec-dark{background:var(--dune);}
+.eyebrow{font-size:.68rem;font-weight:700;letter-spacing:2px;text-transform:uppercase;
+  color:var(--dune-light);margin-bottom:8px;}
+.eyebrow-light{color:rgba(255,255,255,.4);}
+h2{font-size:clamp(1.4rem,2.8vw,2rem);font-weight:800;color:var(--dune);
+  letter-spacing:-.3px;margin-bottom:8px;}
+h2.light{color:var(--white);}
+.rule{width:32px;height:3px;background:var(--accent);border-radius:1px;margin:12px 0 28px;}
+
+/* AI STATEMENT */
+.ai-stmt{background:var(--cream-dark);border-left:3px solid var(--accent);
+  padding:22px 28px;border-radius:0 4px 4px 0;margin-bottom:32px;
+  font-size:.93rem;color:var(--dune);line-height:1.85;}
+
+/* SHOWCASE TABS */
+.showcase-wrap{background:var(--bg);border-top:1px solid var(--border);}
+.showcase-header{padding:52px 7% 0;}
+.stabs{display:flex;gap:0;border-bottom:2px solid var(--border);background:var(--white);
+  padding:0 7%;overflow-x:auto;margin-top:24px;}
+.stab{padding:14px 20px;font-size:.76rem;font-weight:700;letter-spacing:.4px;
+  text-transform:uppercase;cursor:pointer;background:none;border:none;
+  border-bottom:3px solid transparent;margin-bottom:-2px;color:var(--dune-light);
+  white-space:nowrap;transition:all .2s;}
+.stab.active{color:var(--dune);border-bottom-color:var(--accent);}
+.stab:hover:not(.active){color:var(--dune-mid);}
+.spanel{display:none;padding:36px 7% 52px;}
+.spanel.active{display:block;}
+.spanel-inner{max-width:1060px;margin:0 auto;}
+.sec-lbl{font-size:.65rem;font-weight:700;letter-spacing:1.5px;text-transform:uppercase;
+  color:var(--dune-light);margin:28px 0 12px;}
+
+/* FLOW */
+.flow{display:flex;align-items:center;flex-wrap:wrap;gap:4px;margin:16px 0 24px;}
+.fnode{background:var(--white);border:1px solid var(--border);border-radius:6px;
+  padding:13px 14px;text-align:center;min-width:96px;animation:fadeUp .5s ease both;}
+.fnode-icon{font-size:1.25rem;margin-bottom:5px;}
+.fnode-lbl{font-size:.7rem;font-weight:800;color:var(--dune);letter-spacing:.2px;}
+.fnode-sub{font-size:.62rem;color:var(--dune-light);margin-top:2px;line-height:1.35;white-space:pre-line;}
+.farrow{color:var(--sand);font-size:1rem;margin:0 2px;flex-shrink:0;}
+
+/* DETAIL GRID */
+.dgrid{display:grid;grid-template-columns:repeat(auto-fill,minmax(240px,1fr));gap:16px;margin:12px 0 24px;}
+.dcard{background:var(--white);border:1px solid var(--border);border-radius:6px;padding:20px;}
+.dcard h4{font-size:.8rem;font-weight:800;color:var(--dune);margin-bottom:10px;}
+.dcard ul{list-style:none;padding:0;}
+.dcard li{font-size:.77rem;color:var(--dune-mid);padding:4px 0 4px 14px;
+  position:relative;border-bottom:1px solid var(--bg);line-height:1.5;}
+.dcard li:last-child{border-bottom:none;}
+.dcard li::before{content:"–";position:absolute;left:0;color:var(--sand);}
+
+/* METRICS ROW */
+.mrow{display:flex;gap:14px;flex-wrap:wrap;margin:24px 0 8px;}
+.mcard{background:var(--dune);border-radius:6px;padding:18px 16px;
+  text-align:center;flex:1;min-width:100px;}
+.mcard-n{font-size:1.35rem;font-weight:800;color:var(--white);line-height:1.2;}
+.mcard-l{font-size:.67rem;color:rgba(255,255,255,.45);margin-top:4px;line-height:1.4;}
+
+/* TICKER */
+.ticker{background:var(--dune);border-radius:6px;padding:16px 20px;
+  font-family:monospace;font-size:.75rem;color:#7dd87d;line-height:1.9;
+  position:relative;overflow:hidden;min-height:120px;margin:12px 0 24px;}
+.ticker-bar{position:absolute;top:0;left:0;right:0;height:2px;
+  background:linear-gradient(90deg,var(--accent),var(--green));
+  animation:scan 3s linear infinite;}
+
+/* BEFORE/AFTER PIPELINE */
+.pipe-lbl{font-size:.65rem;font-weight:700;letter-spacing:1.2px;text-transform:uppercase;
+  color:var(--dune-light);margin:20px 0 8px;}
+.pipe-row{display:flex;align-items:stretch;gap:8px;flex-wrap:wrap;margin-bottom:8px;}
+.pstep{background:var(--white);border:1px solid var(--border);border-radius:4px;
+  padding:14px 16px;flex:1;min-width:160px;animation:fadeUp .4s ease both;}
+.pstep h5{font-size:.77rem;font-weight:800;color:var(--dune);margin-bottom:4px;}
+.pstep p{font-size:.73rem;color:var(--dune-mid);line-height:1.55;}
+
+/* ARCH GRID */
+.arch{display:grid;grid-template-columns:repeat(auto-fill,minmax(200px,1fr));gap:14px;margin:8px 0 24px;}
+.acol{background:var(--white);border:1px solid var(--border);border-radius:6px;padding:18px;}
+.acol-title{font-size:.68rem;font-weight:700;letter-spacing:1px;text-transform:uppercase;
+  margin-bottom:12px;padding-bottom:8px;border-bottom-width:2px;border-bottom-style:solid;}
+.aitem{display:flex;align-items:center;gap:8px;padding:5px 0;
+  border-bottom:1px solid var(--bg);font-size:.76rem;color:var(--dune-mid);}
+.aitem:last-child{border-bottom:none;}
+.adot{width:7px;height:7px;border-radius:50%;flex-shrink:0;}
+
+/* TIMELINE */
+.tl{max-width:820px;}
+.tl-item{display:flex;gap:22px;margin-bottom:36px;}
+.tl-l{display:flex;flex-direction:column;align-items:center;min-width:32px;}
+.tl-dot{width:10px;height:10px;border-radius:50%;background:var(--dune);
+  border:2px solid var(--white);box-shadow:0 0 0 2px var(--dune);flex-shrink:0;}
+.tl-line{flex:1;width:1px;background:var(--border);margin-top:6px;}
+.tl-org{font-size:.7rem;font-weight:700;letter-spacing:1px;text-transform:uppercase;
+  color:var(--dune-light);margin-bottom:4px;}
+.tl-role{font-size:.98rem;font-weight:800;color:var(--dune);}
+.tl-date{font-size:.76rem;color:var(--dune-light);margin:3px 0 10px;}
+.tl-bullets{list-style:none;padding:0;}
+.tl-bullets li{font-size:.84rem;color:var(--dune-mid);line-height:1.7;
+  padding-left:14px;position:relative;margin-bottom:5px;}
+.tl-bullets li::before{content:"–";position:absolute;left:0;color:var(--sand);}
+.tl-tag{display:inline-block;background:var(--cream);color:var(--dune-mid);
+  font-size:.68rem;font-weight:700;padding:3px 12px;border-radius:2px;margin-top:8px;}
+
+/* ALIGNMENT */
+.align-grid{display:grid;grid-template-columns:repeat(auto-fill,minmax(260px,1fr));gap:18px;}
+.acard{background:var(--white);border:1px solid var(--border);border-radius:4px;
+  padding:22px 20px;border-top:4px solid var(--accent);transition:box-shadow .2s,transform .2s;}
+.acard:hover{box-shadow:0 6px 24px rgba(50,48,47,.08);transform:translateY(-2px);}
+.acard .ai{font-size:1.3rem;margin-bottom:10px;}
+.acard h3{font-size:.87rem;font-weight:800;color:var(--dune);margin-bottom:8px;}
+.acard p{font-size:.81rem;color:var(--dune-mid);line-height:1.65;}
+.match{font-size:.65rem;font-weight:700;letter-spacing:1px;text-transform:uppercase;
+  color:var(--accent);margin-top:12px;}
+
+/* STACK */
+.stack-grid{display:grid;grid-template-columns:repeat(auto-fill,minmax(210px,1fr));gap:14px;}
+.scard{background:var(--white);border:1px solid var(--border);border-radius:4px;padding:18px;}
+.scard h4{font-size:.68rem;font-weight:700;letter-spacing:1.2px;text-transform:uppercase;
+  color:var(--dune-light);margin-bottom:10px;padding-bottom:7px;border-bottom:1px solid var(--border);}
+.stags{display:flex;flex-wrap:wrap;gap:6px;}
+.stag{background:var(--bg);color:var(--dune-mid);font-size:.75rem;padding:4px 10px;border-radius:2px;}
+.stag.s{background:var(--dune);color:var(--white);}
+
+/* SKILLS */
+.sm-wrap{border:1px solid var(--border);border-radius:4px;overflow:hidden;}
+.sm-grid{display:grid;grid-template-columns:1fr 1fr;}
+.sm-col{padding:26px;}
+.sm-col.jd{background:var(--bg);border-right:1px solid var(--border);}
+.sm-col h3{font-size:.7rem;font-weight:700;letter-spacing:1.2px;text-transform:uppercase;
+  margin-bottom:14px;padding-bottom:8px;border-bottom:2px solid var(--border);}
+.sm-col.jd h3{color:var(--dune-mid);}
+.sm-col.me h3{color:#1a7a3c;border-color:#2ea052;}
+.sm-row{display:flex;gap:10px;padding:8px 0;border-bottom:1px solid var(--bg);}
+.sm-row:last-child{border-bottom:none;}
+.sm-chk{font-size:.78rem;font-weight:700;flex-shrink:0;width:18px;margin-top:1px;color:var(--dune-light);}
+.sm-col.me .sm-chk{color:var(--accent);}
+.sm-txt{font-size:.81rem;color:var(--dune-mid);line-height:1.55;}
+
+/* SHEDULA CALLOUT */
+.shed-callout{background:var(--dune);border-radius:4px;padding:32px 36px;
+  margin-top:28px;display:flex;gap:28px;flex-wrap:wrap;align-items:flex-start;}
+.shed-stats{display:grid;grid-template-columns:1fr 1fr;gap:12px;min-width:180px;}
+.sstat{border:1px solid rgba(255,255,255,.1);border-radius:3px;padding:12px 14px;text-align:center;}
+.sstat-n{font-size:1.35rem;font-weight:800;color:var(--white);}
+.sstat-l{font-size:.7rem;color:rgba(255,255,255,.38);margin-top:2px;}
+.shed-link{display:inline-block;margin-top:14px;border:1px solid rgba(255,255,255,.25);
+  color:var(--white);font-size:.8rem;font-weight:600;padding:8px 18px;border-radius:2px;transition:background .2s;}
+.shed-link:hover{background:rgba(255,255,255,.08);}
+
+/* FOOTER */
+footer{background:var(--dune);padding:32px 7%;display:flex;
+  align-items:center;justify-content:space-between;flex-wrap:wrap;gap:16px;}
+.footer-left{color:rgba(255,255,255,.35);font-size:.78rem;line-height:1.8;}
+.footer-left a{color:rgba(255,255,255,.35);}
+.fbtn{border:1px solid rgba(255,255,255,.2);color:rgba(255,255,255,.7);
+  font-size:.78rem;font-weight:600;padding:7px 16px;border-radius:2px;transition:all .2s;}
+.fbtn:hover{border-color:rgba(255,255,255,.5);color:var(--white);}
+
+/* ANIMATIONS */
+@keyframes fadeUp{from{opacity:0;transform:translateY(10px)}to{opacity:1;transform:translateY(0)}}
+@keyframes scan{from{transform:translateX(-100%)}to{transform:translateX(100%)}}
+@keyframes blink{50%{opacity:0}}
+.blink{animation:blink 1s step-end infinite;}
+.pulse{box-shadow:0 0 0 3px rgba(200,118,58,.2);}
+
+@media(max-width:700px){
+  .nav-right a,.nav-right .nav-badge~*{display:none;}
+  .hero-inner,.hero-right{flex-direction:column;gap:24px;}
+  .metrics-strip{grid-template-columns:repeat(2,1fr);}
+  .sm-grid{grid-template-columns:1fr;}
+  .sm-col.jd{border-right:none;border-bottom:1px solid var(--border);}
+  .flow{gap:3px;}
+}
+</style>
+</head>
+<body>
+
+<!-- NAV -->
+<nav id="main-nav">
+  <div class="nav-brand">
+    <span class="ws-word">Wealthsimple</span>
+    <div class="nav-sep"></div>
+    <span class="nav-sub">Andre Mendes · Candidate Portfolio</span>
+  </div>
+  <div class="nav-right">
+    <a href="#ai">AI & Automation</a>
+    <a href="#career">Career</a>
+    <a href="#alignment">Alignment</a>
+    <a href="#stack">Stack</a>
+    <span class="nav-badge">Lead, WFM Platform & Automation</span>
+  </div>
+</nav>
+
+<!-- HERO -->
+<section class="hero">
+  <div class="hero-inner">
+    <div class="hero-photo"><img src="photo.jpg" alt="Andre Mendes"/></div>
+    <div class="hero-text">
+      <div class="hero-eyebrow">WFM Architect · AI Builder · Interview Portfolio</div>
+      <h1>Andre Mendes</h1>
+      <p class="hero-sub">10+ years turning workforce management from a manual discipline into a system-driven capability. I don't just run WFM — I build the infrastructure that makes it scale without adding headcount.</p>
+      <div class="hero-contact">
+        <span>Vancouver, BC</span>
+        <a href="mailto:andremanentem@gmail.com">andremanentem@gmail.com</a>
+        <a href="tel:+17782550144">778 255 0144</a>
+        <a href="https://www.linkedin.com/in/andremendes-2610" target="_blank">LinkedIn</a>
+      </div>
+    </div>
+    <div class="hero-right">
+      <div class="role-card">
+        <div class="rc-lbl">Applying For</div>
+        <div class="rc-role">Lead, WFM Platform<br>&amp; Automation</div>
+        <div class="rc-org">Wealthsimple · Client Experience Ops</div>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- METRICS -->
+<section style="background:var(--dune);border-top:1px solid rgba(255,255,255,.06);">
+  <div class="metrics-strip">
+    <div class="mc"><div class="mc-n">10+</div><div class="mc-l">Years WFM architecture &amp; operations</div></div>
+    <div class="mc"><div class="mc-n">2 yrs</div><div class="mc-l">Production AI — LLM agents, GPT-4 Vision, Claude Sonnet 4.6 &amp; Opus 4.8 with MCP connectors</div></div>
+    <div class="mc"><div class="mc-n">5+ yrs</div><div class="mc-l">Scripting &amp; process automation — PowerShell, OCR, Power Automate, bot pipelines</div></div>
+    <div class="mc"><div class="mc-n">10K+</div><div class="mc-l">Call centre agents on WFM platforms I deployed &amp; managed</div></div>
+    <div class="mc"><div class="mc-n">$175K+</div><div class="mc-l">Annual savings from automation I built ($100K Concentrix · $75K Coast Capital)</div></div>
+    <div class="mc"><div class="mc-n">Vibe</div><div class="mc-l">Solo-built live B2B WFM SaaS using vibe coding — paying customers, production infrastructure</div></div>
+    <div class="mc"><div class="mc-n">MBA</div><div class="mc-l">University Canada West · 2024</div></div>
+  </div>
+</section>
+
+<!-- AI SECTION -->
+<section class="sec" id="ai">
+  <div class="eyebrow">The Core Differentiator</div>
+  <h2>AI &amp; Automation — What I've Actually Built</h2>
+  <div class="rule"></div>
+  <div class="ai-stmt">
+    Wealthsimple's brief is clear: <strong>decouple team headcount growth from company growth.</strong>
+    That's been my operating principle for three years. I don't add analysts when volume grows —
+    I build systems that absorb growth automatically. Every automation I've shipped exists to remove
+    a human from a loop that shouldn't need one. I sit at the intersection of deep WFM domain knowledge
+    and production engineering — knowing exactly what the business needs and being able to build it
+    without an intermediary is what makes the systems I ship actually work.
+  </div>
+
+  <!-- SHOWCASE -->
+  <div class="showcase-wrap" style="margin:0 -7%;border-radius:0;">
+    <div class="showcase-header" style="padding:40px 7% 0;">
+      <div class="eyebrow">Technical Showcase</div>
+      <h2>Projects — Frameworks &amp; Workflows</h2>
+      <div class="rule" style="margin-bottom:0;"></div>
+    </div>
+    <div class="stabs">
+      <button class="stab active" onclick="showTab('rta')">🤖 RTA Bot</button>
+      <button class="stab" onclick="showTab('superforecast')">📡 Super Forecaster</button>
+      <button class="stab" onclick="showTab('shedula-forecast')">📈 Shedula Forecast</button>
+      <button class="stab" onclick="showTab('powerbi')">📊 Power BI</button>
+      <button class="stab" onclick="showTab('shedula')">🚀 Shedula.io</button>
+      <button class="stab" onclick="showTab('hootsuite')">💬 Hootsuite Bot</button>
+    </div>
+
+    <!-- RTA BOT -->
+    <div class="spanel active" id="tab-rta">
+      <div class="spanel-inner">
+        <p style="font-size:.88rem;color:var(--dune-mid);line-height:1.7;max-width:700px;">Coast Capital Savings · 2025 · PowerShell + GPT-4 Vision API + Microsoft 365</p>
+        <div class="rule"></div>
+        <div class="sec-lbl">End-to-End Workflow</div>
+        <div class="flow" id="flow-rta"></div>
+        <div class="sec-lbl">Live Log Simulation</div>
+        <div class="ticker" id="ticker">
+          <div class="ticker-bar"></div>
+          <div id="ticker-text"></div>
+          <span class="blink">_</span>
+        </div>
+        <div class="dgrid">
+          <div class="dcard"><h4>🎯 Per-LOB Thresholds</h4><ul>
+            <li>LOB 1 → &gt;10 calls OR &gt;10 min wait</li>
+            <li>LOB 2 → &gt;5 calls OR &gt;20 min wait</li>
+            <li>LOB 3 → &gt;5 calls OR &gt;20 min wait</li>
+            <li>LOB 4 → &gt;3 calls OR &gt;20 min wait</li>
+          </ul></div>
+          <div class="dcard"><h4>⚙️ Engine Details</h4><ul>
+            <li>Loaded <code>.NET</code> Forms + Drawing assemblies</li>
+            <li>Timestamp + <code>latest.png</code> overwrite pattern</li>
+            <li>Regex validates GPT output format before logging</li>
+            <li>Alert state persisted in <code>alert.txt</code></li>
+            <li>Escalation if breach persists &gt;30 min</li>
+            <li>Normalization message if stable &gt;5 min</li>
+          </ul></div>
+          <div class="dcard"><h4>📦 Historical Layer</h4><ul>
+            <li>Every GPT response logged with timestamp</li>
+            <li>Log rotation for historical trend analysis</li>
+            <li>Centralized shareable output for team</li>
+            <li>Replaced dedicated full-time monitor role</li>
+          </ul></div>
+        </div>
+        <div class="mrow">
+          <div class="mcard"><div class="mcard-n">$75K</div><div class="mcard-l">Annual savings<br>Coast Capital</div></div>
+          <div class="mcard"><div class="mcard-n">0</div><div class="mcard-l">Manual interventions<br>in monitoring loop</div></div>
+          <div class="mcard"><div class="mcard-n">4 LOBs</div><div class="mcard-l">Monitored<br>simultaneously</div></div>
+          <div class="mcard"><div class="mcard-n">30 min</div><div class="mcard-l">Max escalation<br>response time</div></div>
+        </div>
+      </div>
+    </div>
+
+    <!-- SUPER FORECASTER -->
+    <div class="spanel" id="tab-superforecast">
+      <div class="spanel-inner">
+        <p style="font-size:.88rem;color:var(--dune-mid);line-height:1.7;max-width:700px;">
+          Live at <a href="https://super-forecast.streamlit.app" target="_blank" style="color:var(--accent);font-weight:700;">super-forecast.streamlit.app</a> ·
+          FastAPI + Streamlit · GitHub: AndreMendes92/Super-Forecaster · Backend on Render · Frontend on Streamlit Cloud
+        </p>
+        <div class="rule"></div>
+        <div class="ai-stmt" style="margin-bottom:28px;">
+          A full-stack public forecasting web app — upload historical data, pull real government time-series,
+          or use live real estate API data, then forecast 1–12 periods ahead and compare four methods simultaneously.
+          <strong>Separated API/UI architecture:</strong> FastAPI backend handles all forecasting logic and data
+          source integration; Streamlit frontend handles UX. Two separate free hosting providers — no monolith.
+        </div>
+        <div class="sec-lbl">Full-Stack Architecture</div>
+        <div class="flow" id="flow-superforecast"></div>
+        <div class="dgrid">
+          <div class="dcard"><h4>📡 StatCan API (Free, No Key)</h4><ul>
+            <li>Pulls any public vector ID via WDS API</li>
+            <li>Currently: vector 111955442 = Canada NHPI</li>
+            <li>Index data (Dec 2016 = 100) — % change toggle built in</li>
+            <li>Monthly time series — 12-month seasonality cycle</li>
+            <li>Strip "v" prefix from vector ID on input</li>
+          </ul></div>
+          <div class="dcard"><h4>🏠 Repliers MLS API</h4><ul>
+            <li>Real sold-price stats by city + property type</li>
+            <li>Sandbox key on Render (realistic fake data)</li>
+            <li>Production key (~$199/mo) for real prices</li>
+            <li>CREA HPI prices are realtor-only — no public API</li>
+            <li>CMHC data abandoned — too unreliable</li>
+          </ul></div>
+          <div class="dcard"><h4>📈 Holt-Winters &amp; ARIMA</h4><ul>
+            <li>Holt-Winters: trend + seasonality (best for most)</li>
+            <li>ARIMA: seasonal (monthly/12-cycle) for structure</li>
+            <li>Non-seasonal ARIMA for weekly (52-cycle) stability</li>
+            <li>Both support freq=W and freq=M data</li>
+          </ul></div>
+          <div class="dcard"><h4>🔧 Deployment</h4><ul>
+            <li>Build: <code>pip install -r backend/requirements.txt</code></li>
+            <li>Start: <code>uvicorn main:app --app-dir backend</code></li>
+            <li>REPLIERS_API_KEY env var on Render</li>
+            <li><code>width='stretch'</code> — Streamlit deprecation fixed</li>
+          </ul></div>
+        </div>
+        <div class="mrow">
+          <div class="mcard"><div class="mcard-n">4</div><div class="mcard-l">Forecasting methods<br>side-by-side</div></div>
+          <div class="mcard"><div class="mcard-n">4</div><div class="mcard-l">Live data sources<br>(StatCan, Repliers, CSV, dummy)</div></div>
+          <div class="mcard"><div class="mcard-n">2</div><div class="mcard-l">Separate hosts<br>(Render + Streamlit Cloud)</div></div>
+          <div class="mcard"><div class="mcard-n">Live</div><div class="mcard-l">Public URL —<br>free to access</div></div>
+        </div>
+      </div>
+    </div>
+
+    <!-- SHEDULA FORECAST -->
+    <div class="spanel" id="tab-shedula-forecast">
+      <div class="spanel-inner">
+        <p style="font-size:.88rem;color:var(--dune-mid);line-height:1.7;max-width:700px;">Shedula.io · Embedded WFM Forecasting Engine · Growth+ Plan · Python + FastAPI + Erlang C → staffing requirements</p>
+        <div class="rule"></div>
+        <div class="ai-stmt" style="margin-bottom:28px;">
+          Unlike the Super Forecaster (standalone analysis tool), this engine is <strong>embedded inside Shedula.io</strong>
+          and purpose-built for WFM. It takes historical interval-level call volume data, detects the best statistical
+          method automatically, runs the forecast, then <strong>converts output directly into staffing requirements</strong>
+          via Erlang C — writing results into the scheduling engine with no manual steps.
+        </div>
+        <div class="sec-lbl">WFM Forecasting Pipeline</div>
+        <div class="flow" id="flow-shedula-forecast"></div>
+        <div class="dgrid">
+          <div class="dcard"><h4>📈 Holt-Winters</h4><ul>
+            <li>Trend detected (slope &gt; threshold)</li>
+            <li>AND weekly seasonality confirmed (autocorr lag 7)</li>
+            <li>Best fit for most contact centres</li>
+            <li>Handles both trend + cyclical patterns</li>
+          </ul></div>
+          <div class="dcard"><h4>📉 ARIMA</h4><ul>
+            <li>Clear trend present, no significant seasonality</li>
+            <li>Statistical time series model</li>
+            <li>Used for monotonic growth/decline</li>
+          </ul></div>
+          <div class="dcard"><h4>🌊 Seasonal Decomp</h4><ul>
+            <li>Strong weekly pattern — no trend slope</li>
+            <li>Separates seasonal from residual noise</li>
+            <li>Best for stable, cyclical contact centre volumes</li>
+          </ul></div>
+          <div class="dcard"><h4>📏 Moving Average</h4><ul>
+            <li>Stable volume — low coefficient of variation</li>
+            <li>No trend, no seasonality signal</li>
+            <li>Flat-projection of last 4 periods</li>
+          </ul></div>
+        </div>
+        <div class="dgrid">
+          <div class="dcard"><h4>🕐 Forecast History</h4><ul>
+            <li>Every forecast auto-saved to forecasts table</li>
+            <li>History pills — click to reload any past run</li>
+            <li>Page loads most recent forecast on mount</li>
+          </ul></div>
+          <div class="dcard"><h4>⚡ Apply to Staffing</h4><ul>
+            <li>One click → writes agents_required per interval</li>
+            <li>Replaces coverage_requirements for queue</li>
+            <li>Scheduling engine immediately picks up new reqs</li>
+            <li>Full horizon (3/6/12mo) applied in one operation</li>
+          </ul></div>
+        </div>
+        <div class="mrow">
+          <div class="mcard"><div class="mcard-n">60→90%</div><div class="mcard-l">Forecast accuracy<br>Coast Capital · 90 days</div></div>
+          <div class="mcard"><div class="mcard-n">4</div><div class="mcard-l">Methods auto-detected<br>and compared</div></div>
+          <div class="mcard"><div class="mcard-n">12mo</div><div class="mcard-l">Max forecast<br>horizon</div></div>
+          <div class="mcard"><div class="mcard-n">0 clicks</div><div class="mcard-l">Forecast →<br>staffing requirements</div></div>
+        </div>
+      </div>
+    </div>
+
+    <!-- POWER BI -->
+    <div class="spanel" id="tab-powerbi">
+      <div class="spanel-inner">
+        <p style="font-size:.88rem;color:var(--dune-mid);line-height:1.7;max-width:700px;">Concentrix · 2022 · Power Query + M Language + Power BI Service · 50+ analysts · 20+ accounts</p>
+        <div class="rule"></div>
+        <div class="pipe-lbl">BEFORE — Manual Process (2 hours)</div>
+        <div class="pipe-row">
+          <div class="pstep" style="border-top:3px solid var(--red);"><h5>📥 Raw Data Export</h5><p>Manual NICE IEX exports per LOB. Multiple files, no standard format. Analyst-dependent.</p></div>
+          <span class="farrow" style="align-self:center;">→</span>
+          <div class="pstep" style="border-top:3px solid var(--red);"><h5>🔨 Excel Manipulation</h5><p>VLOOKUP chains, manual pivot tables, copy-paste across sheets. Error-prone.</p></div>
+          <span class="farrow" style="align-self:center;">→</span>
+          <div class="pstep" style="border-top:3px solid var(--red);"><h5>📊 Static Report</h5><p>PowerPoint / static Excel deck. Stale within hours. No drill-down capability.</p></div>
+        </div>
+        <div class="pipe-lbl" style="margin-top:20px;">AFTER — Automated Pipeline (10 minutes)</div>
+        <div class="pipe-row">
+          <div class="pstep" style="border-top:3px solid var(--green);"><h5>🔗 Data Connectors</h5><p>Power Query connects to IEX exports + SharePoint. Parameterized sources.</p></div>
+          <span class="farrow" style="align-self:center;">→</span>
+          <div class="pstep" style="border-top:3px solid var(--green);"><h5>⚙️ M Language ETL</h5><p>Custom M functions: column normalization, shrinkage calc, multi-LOB merge, date spine generation.</p></div>
+          <span class="farrow" style="align-self:center;">→</span>
+          <div class="pstep" style="border-top:3px solid var(--green);"><h5>📐 Data Model</h5><p>Star schema: fact_adherence, dim_agent, dim_queue, dim_date. Net staffing + gap analysis columns.</p></div>
+          <span class="farrow" style="align-self:center;">→</span>
+          <div class="pstep" style="border-top:3px solid var(--green);"><h5>📊 Live Dashboard</h5><p>Refresh-on-demand. Exec KPI cards, intraday heatmap, drill-through per agent/LOB.</p></div>
+        </div>
+        <div class="dgrid" style="margin-top:20px;">
+          <div class="dcard"><h4>🔧 Power Query / M</h4><ul>
+            <li>Custom M functions for reusable transforms</li>
+            <li>Dynamic parameter tables for LOB config</li>
+            <li>H:MM normalization (Excel strips leading zeros)</li>
+            <li>Bulk interval merge across 20+ accounts</li>
+          </ul></div>
+          <div class="dcard"><h4>📐 Data Model</h4><ul>
+            <li>Star schema — fact + dimension tables</li>
+            <li>Net staffing = scheduled − required</li>
+            <li>Shrinkage % applied per 30-min interval</li>
+            <li>Rolling 4-week average baselines</li>
+          </ul></div>
+          <div class="dcard"><h4>📊 Dashboards</h4><ul>
+            <li>Real-time adherence by agent + LOB</li>
+            <li>Intraday coverage heatmap (red/green)</li>
+            <li>Attrition + absenteeism trend lines</li>
+            <li>Executive Net Staffing summary cards</li>
+          </ul></div>
+        </div>
+        <div class="mrow">
+          <div class="mcard"><div class="mcard-n">2h→10min</div><div class="mcard-l">Report production<br>time reduction</div></div>
+          <div class="mcard"><div class="mcard-n">50+</div><div class="mcard-l">Analysts using<br>the dashboard</div></div>
+          <div class="mcard"><div class="mcard-n">20+</div><div class="mcard-l">Client accounts<br>on one model</div></div>
+          <div class="mcard"><div class="mcard-n">Live</div><div class="mcard-l">Refresh-on-demand<br>Power BI Service</div></div>
+        </div>
+      </div>
+    </div>
+
+    <!-- SHEDULA.IO -->
+    <div class="spanel" id="tab-shedula">
+      <div class="spanel-inner">
+        <p style="font-size:.88rem;color:var(--dune-mid);line-height:1.7;max-width:700px;">Solo-built · React + FastAPI + PostgreSQL/Supabase + Stripe · Live with paying customers</p>
+        <div class="rule"></div>
+        <div class="sec-lbl">System Architecture</div>
+        <div class="arch">
+          <div class="acol">
+            <div class="acol-title" style="color:var(--blue);border-color:var(--blue);">Frontend · React</div>
+            <div class="aitem"><div class="adot" style="background:var(--blue)"></div>Weekly Gantt (drag + resize)</div>
+            <div class="aitem"><div class="adot" style="background:var(--blue)"></div>Coverage heatmap (Erlang C)</div>
+            <div class="aitem"><div class="adot" style="background:var(--blue)"></div>AI Forecasting UI</div>
+            <div class="aitem"><div class="adot" style="background:var(--blue)"></div>WFM Assistant Bot</div>
+            <div class="aitem"><div class="adot" style="background:var(--blue)"></div>BroadcastChannel sync</div>
+            <div class="aitem"><div class="adot" style="background:var(--blue)"></div>Stripe Checkout embed</div>
+            <div class="aitem"><div class="adot" style="background:var(--blue)"></div>Publish/unpublish gate</div>
+          </div>
+          <div class="acol">
+            <div class="acol-title" style="color:var(--accent);border-color:var(--accent);">Backend · FastAPI</div>
+            <div class="aitem"><div class="adot" style="background:var(--accent)"></div>Scheduling engine (greedy gap-first)</div>
+            <div class="aitem"><div class="adot" style="background:var(--accent)"></div>Erlang C calculator</div>
+            <div class="aitem"><div class="adot" style="background:var(--accent)"></div>Forecasting pipeline (4 methods)</div>
+            <div class="aitem"><div class="adot" style="background:var(--accent)"></div>LLM orchestration (Claude API)</div>
+            <div class="aitem"><div class="adot" style="background:var(--accent)"></div>REST API + HMAC webhooks</div>
+            <div class="aitem"><div class="adot" style="background:var(--accent)"></div>Rate limiting (slowapi)</div>
+            <div class="aitem"><div class="adot" style="background:var(--accent)"></div>Resend transactional email</div>
+          </div>
+          <div class="acol">
+            <div class="acol-title" style="color:var(--green);border-color:var(--green);">Infra & Data</div>
+            <div class="aitem"><div class="adot" style="background:var(--green)"></div>PostgreSQL · 27 RLS tables</div>
+            <div class="aitem"><div class="adot" style="background:var(--green)"></div>Supabase Auth (JWT + OAuth)</div>
+            <div class="aitem"><div class="adot" style="background:var(--green)"></div>Stripe subscriptions (3 tiers)</div>
+            <div class="aitem"><div class="adot" style="background:var(--green)"></div>Vercel (frontend)</div>
+            <div class="aitem"><div class="adot" style="background:var(--green)"></div>Render (backend)</div>
+            <div class="aitem"><div class="adot" style="background:var(--green)"></div>Dependabot security</div>
+            <div class="aitem"><div class="adot" style="background:var(--green)"></div>PIPEDA/GDPR compliant</div>
+          </div>
+        </div>
+        <div class="sec-lbl">Scheduling Engine Flow</div>
+        <div class="flow" id="flow-shedula"></div>
+        <div class="shed-callout">
+          <div style="flex:1;min-width:240px;">
+            <p style="font-size:.65rem;font-weight:700;letter-spacing:1.5px;text-transform:uppercase;color:var(--sand);margin-bottom:10px;">Proof of Concept at Production Scale</p>
+            <p style="font-size:1.2rem;font-weight:800;color:var(--white);margin-bottom:10px;">Shedula.io</p>
+            <p style="color:rgba(255,255,255,.6);font-size:.85rem;line-height:1.75;">
+              I solo-built a live B2B SaaS WFM platform using <strong style="color:rgba(255,255,255,.85);">vibe coding</strong> —
+              React frontend, FastAPI backend, PostgreSQL/Supabase, Stripe billing,
+              <strong style="color:rgba(255,255,255,.85);">27 RLS-secured tables</strong>, full security audit. Real paying customers.
+            </p>
+            <a href="https://shedula.io" target="_blank" class="shed-link">Visit Shedula.io →</a>
+          </div>
+          <div class="shed-stats">
+            <div class="sstat"><div class="sstat-n">Live</div><div class="sstat-l">Paying customers</div></div>
+            <div class="sstat"><div class="sstat-n">27</div><div class="sstat-l">RLS-secured tables</div></div>
+            <div class="sstat"><div class="sstat-n">3</div><div class="sstat-l">Billing tiers</div></div>
+            <div class="sstat"><div class="sstat-n">6+</div><div class="sstat-l">Trial orgs</div></div>
+          </div>
+        </div>
+      </div>
+    </div>
+
+    <!-- HOOTSUITE BOT -->
+    <div class="spanel" id="tab-hootsuite">
+      <div class="spanel-inner">
+        <p style="font-size:.88rem;color:var(--dune-mid);line-height:1.7;max-width:700px;">Hootsuite · 2025–Present · Claude Opus 4.8 + Salesforce MCP + Slack MCP + Workflow Automation</p>
+        <div class="rule"></div>
+        <div class="sec-lbl">Multi-Source Intelligence Workflow</div>
+        <div class="flow" id="flow-hootsuite"></div>
+        <div class="dgrid">
+          <div class="dcard"><h4>🔗 Salesforce MCP</h4><ul>
+            <li>Live ticket volume by queue/channel</li>
+            <li>Case type breakdown for demand classification</li>
+            <li>AHT signals from case complexity data</li>
+            <li>No manual data pulls — injected per query</li>
+          </ul></div>
+          <div class="dcard"><h4>🤖 Claude Opus 4.8</h4><ul>
+            <li>Fuses CRM demand with WFM staffing data</li>
+            <li>Identifies coverage gaps per interval</li>
+            <li>Flags demand spikes before they hit SLAs</li>
+            <li>Plain-language recommendations for team leads</li>
+          </ul></div>
+          <div class="dcard"><h4>💬 Slack MCP Output</h4><ul>
+            <li>Recommendations pushed to team Slack channels</li>
+            <li>Actionable alerts — not just raw data</li>
+            <li>Team operates without switching tools</li>
+            <li>Async-friendly for global team (5 analysts)</li>
+          </ul></div>
+          <div class="dcard"><h4>📐 Business Impact</h4><ul>
+            <li>Higher situational awareness for WFM team</li>
+            <li>Faster, more confident staffing decisions</li>
+            <li>Optimizes headcount without adding analysts</li>
+            <li>Decouples team growth from operational complexity</li>
+          </ul></div>
+        </div>
+        <div class="mrow">
+          <div class="mcard"><div class="mcard-n">Claude<br>Opus 4.8</div><div class="mcard-l">LLM powering<br>the agent</div></div>
+          <div class="mcard"><div class="mcard-n">2 MCPs</div><div class="mcard-l">Salesforce +<br>Slack connected</div></div>
+          <div class="mcard"><div class="mcard-n">5</div><div class="mcard-l">Global analysts<br>using it daily</div></div>
+          <div class="mcard"><div class="mcard-n">0</div><div class="mcard-l">Manual data<br>pulls needed</div></div>
+        </div>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- CAREER -->
+<section class="sec sec-bg" id="career">
+  <div class="eyebrow">Career Progression</div>
+  <h2>From WFM Practitioner to WFM Systems Architect</h2>
+  <div class="rule"></div>
+  <div class="tl">
+    <div class="tl-item">
+      <div class="tl-l"><div class="tl-dot"></div><div class="tl-line"></div></div>
+      <div>
+        <div class="tl-org">Hootsuite · Vancouver, BC</div>
+        <div class="tl-role">Team Lead, Workforce Management</div>
+        <div class="tl-date">September 2025 – Present</div>
+        <ul class="tl-bullets">
+          <li>Leading a global team of <strong>5 WFM analysts</strong> — setting technical direction, building AI-augmented procedures.</li>
+          <li>Driving WFM platform evaluation with focus on <strong>API-based customization and scalability.</strong></li>
+          <li>Built Claude Opus 4.8 + Salesforce MCP + Slack MCP intelligence bot for the team.</li>
+        </ul>
+        <span class="tl-tag">Current · Team Lead · AI Strategy</span>
+      </div>
+    </div>
+    <div class="tl-item">
+      <div class="tl-l"><div class="tl-dot"></div><div class="tl-line"></div></div>
+      <div>
+        <div class="tl-org">Coast Capital Savings · Surrey, BC</div>
+        <div class="tl-role">Workforce Planning Analyst</div>
+        <div class="tl-date">January 2024 – October 2025</div>
+        <ul class="tl-bullets">
+          <li>Built and deployed the <strong>RTA Bot</strong> — PowerShell + GPT-4 Vision autonomous agent. <strong>$75K annual savings.</strong></li>
+          <li>Rebuilt forecasting methodology from <strong>~60% to 90%+ accuracy in 90 days.</strong></li>
+          <li>Led <strong>what-if scenario modelling during a 3-credit-union merger.</strong></li>
+        </ul>
+        <span class="tl-tag">AI Agent · Forecasting · Merger Scenario Modelling</span>
+      </div>
+    </div>
+    <div class="tl-item">
+      <div class="tl-l"><div class="tl-dot"></div><div class="tl-line"></div></div>
+      <div>
+        <div class="tl-org">Concentrix · São Paulo, Brazil</div>
+        <div class="tl-role">WFM Specialist → Senior Analyst → Analyst</div>
+        <div class="tl-date">April 2020 – September 2023 · 3 yrs 6 mos</div>
+        <ul class="tl-bullets">
+          <li>Led <strong>NICE IEX WFM v7.1 deployment</strong> — 10,000+ employees. Understand schemas, API limits, integration architecture.</li>
+          <li>Built RTA bot POC saving <strong>$100,000 annually;</strong> Net Staffing reporting from 2h → 10min via Power BI.</li>
+          <li>Owned <strong>enterprise capacity planning across 22+ portfolios.</strong> Directed <strong>50+ WFM analysts.</strong></li>
+        </ul>
+        <span class="tl-tag">Platform Deployment · Automation · Enterprise Scale</span>
+      </div>
+    </div>
+    <div class="tl-item">
+      <div class="tl-l"><div class="tl-dot"></div></div>
+      <div>
+        <div class="tl-org">Conduent · São Paulo, Brazil</div>
+        <div class="tl-role">WFM Supervisor → WFM Analyst</div>
+        <div class="tl-date">May 2016 – April 2020 · 4 yrs</div>
+        <ul class="tl-bullets">
+          <li>Promoted to WFM Lead — supervised 5 analysts, built first capacity planning frameworks from scratch.</li>
+          <li>Drove <strong>30% productivity improvement</strong> through algorithmic scheduling optimization.</li>
+        </ul>
+        <span class="tl-tag">First Leadership Role · Scheduling Optimization</span>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- ALIGNMENT -->
+<section class="sec" id="alignment">
+  <div class="eyebrow">Role Alignment</div>
+  <h2>What Wealthsimple Needs → What I Bring</h2>
+  <div class="rule"></div>
+  <div class="align-grid">
+    <div class="acard"><div class="ai">🤖</div><h3>Build AI Agents for WFM Automation</h3><p>Two production AI agents shipped: RTA Bot (GPT-4 Vision) and Shedula WFM Assistant Bot (Claude API). Hootsuite bot with Claude Opus 4.8 + Salesforce &amp; Slack MCP. All live, real users.</p><div class="match">✓ Production Shipped</div></div>
+    <div class="acard"><div class="ai">📈</div><h3>Forecasting Models &amp; Real-Time Engines</h3><p>Built AI forecasting engine in Shedula (Holt-Winters, ARIMA, smart method detection). Rebuilt Coast Capital's methodology 60→90% in 90 days. Standalone Super Forecaster with StatCan + Repliers API.</p><div class="match">✓ Built &amp; In Production</div></div>
+    <div class="acard"><div class="ai">🔧</div><h3>WFM Platform Technical Co-Ownership</h3><p>Deployed NICE IEX v7.1 at 10,000+ employee scale — understand underlying schemas, API limits, and integration boundaries beyond UI navigation.</p><div class="match">✓ Deep Vendor Experience</div></div>
+    <div class="acard"><div class="ai">🔗</div><h3>REST APIs, Webhooks &amp; Middleware</h3><p>Built Shedula's full API layer: SHA-256 auth, HMAC-signed webhooks, inbound receivers for Zendesk/Five9/Genesys, public REST API. Production code, no intermediary.</p><div class="match">✓ Production Code Shipped</div></div>
+    <div class="acard"><div class="ai">📐</div><h3>Decouple Headcount from Growth</h3><p>This is my operating principle. Every system I've built — RTA bot, scheduling engine, forecasting pipeline, API layer — exists to absorb operational scale without proportional headcount increases.</p><div class="match">✓ Core Operating Principle</div></div>
+    <div class="acard"><div class="ai">👥</div><h3>Set Technical Direction &amp; Mentor</h3><p>Setting WFM technical direction at Hootsuite (5 global analysts). Previously mentored 50+ analysts at Concentrix through platform deployments and governance frameworks.</p><div class="match">✓ Direct Match</div></div>
+    <div class="acard"><div class="ai">🏦</div><h3>Regulated Financial Services</h3><p>Coast Capital Savings (Canadian financial institution). Shedula.io built PIPEDA/GDPR-compliant with full RLS security audit — regulated-environment thinking is embedded in how I build.</p><div class="match">✓ Fintech-Adjacent Background</div></div>
+    <div class="acard"><div class="ai">🧩</div><h3>WFM Vendor Architecture Depth</h3><p>NICE IEX v7.1 at enterprise scale — data schemas, API capabilities, integration limits known beyond UI. IBM Cognos, IEX Forecasting, Avaya CMS, Genesys CMS all used in production.</p><div class="match">✓ Deep Vendor Knowledge</div></div>
+  </div>
+</section>
+
+<!-- STACK -->
+<section class="sec sec-cream" id="stack">
+  <div class="eyebrow">Technical Capability</div>
+  <h2>Stack &amp; Tools</h2>
+  <div class="rule"></div>
+  <div class="stack-grid">
+    <div class="scard"><h4>AI &amp; LLM</h4><div class="stags"><span class="stag s">GPT-4 Vision API</span><span class="stag s">Claude Sonnet 4.6</span><span class="stag s">Claude Opus 4.8</span><span class="stag s">MCP Connectors</span><span class="stag">LLM Orchestration</span><span class="stag">Prompt Engineering</span></div></div>
+    <div class="scard"><h4>Automation &amp; Scripting</h4><div class="stags"><span class="stag s">PowerShell</span><span class="stag s">Power Automate</span><span class="stag">OCR (Tesseract)</span><span class="stag">Task Scheduler</span><span class="stag">Bot Automation</span></div></div>
+    <div class="scard"><h4>Backend &amp; APIs</h4><div class="stags"><span class="stag s">FastAPI (Python)</span><span class="stag s">REST APIs</span><span class="stag s">Webhooks (HMAC)</span><span class="stag">PostgreSQL/Supabase</span><span class="stag">Stripe API</span></div></div>
+    <div class="scard"><h4>Frontend</h4><div class="stags"><span class="stag s">React</span><span class="stag">Tailwind CSS</span><span class="stag">Streamlit</span><span class="stag">Vercel</span><span class="stag">Vite</span></div></div>
+    <div class="scard"><h4>Analytics &amp; BI</h4><div class="stags"><span class="stag s">Power BI</span><span class="stag s">Power Query / M</span><span class="stag s">Excel (Advanced)</span><span class="stag">IBM Cognos</span></div></div>
+    <div class="scard"><h4>WFM Platforms</h4><div class="stags"><span class="stag s">NICE IEX WFM</span><span class="stag s">IEX Forecasting</span><span class="stag">Avaya CMS</span><span class="stag">Genesys CMS</span><span class="stag">IBM Cognos</span></div></div>
+    <div class="scard"><h4>Forecasting Methods</h4><div class="stags"><span class="stag s">Erlang C</span><span class="stag s">Holt-Winters</span><span class="stag">ARIMA</span><span class="stag">Seasonal Decomp</span><span class="stag">Linear Regression</span></div></div>
+    <div class="scard"><h4>Security &amp; Infra</h4><div class="stags"><span class="stag">SHA-256 API Keys</span><span class="stag">RLS (27 tables)</span><span class="stag">JWT/Rate Limiting</span><span class="stag">PIPEDA/GDPR</span><span class="stag">Render · Vercel</span></div></div>
+  </div>
+</section>
+
+<!-- SKILLS MATCH -->
+<section class="sec">
+  <div class="eyebrow">Skills Alignment</div>
+  <h2>JD Requirements vs. My Experience</h2>
+  <div class="rule"></div>
+  <div class="sm-wrap">
+    <div class="sm-grid">
+      <div class="sm-col jd">
+        <h3>Wealthsimple Is Looking For</h3>
+        <div class="sm-row"><span class="sm-chk">→</span><span class="sm-txt">6–8+ years WFM architecture &amp; contact centre platform operations</span></div>
+        <div class="sm-row"><span class="sm-chk">→</span><span class="sm-txt">5+ years designing end-to-end WFM solutions: forecasting, scheduling, real-time engines</span></div>
+        <div class="sm-row"><span class="sm-chk">→</span><span class="sm-txt">3+ years production AI &amp; automation: autonomous agents, LLM orchestration, Python</span></div>
+        <div class="sm-row"><span class="sm-chk">→</span><span class="sm-txt">Production REST APIs, webhooks, middleware between WFM/CRM/ticketing systems</span></div>
+        <div class="sm-row"><span class="sm-chk">→</span><span class="sm-txt">Business strategy → technical system design; mentor junior specialists</span></div>
+        <div class="sm-row"><span class="sm-chk">→</span><span class="sm-txt">WFM vendor depth: schemas, APIs, integration limits (NICE, Verint, Assembled)</span></div>
+        <div class="sm-row"><span class="sm-chk">→</span><span class="sm-txt">BI tools for exec-level contact centre dashboards</span></div>
+        <div class="sm-row"><span class="sm-chk">→</span><span class="sm-txt">Fintech / regulated financial services background</span></div>
+      </div>
+      <div class="sm-col me">
+        <h3>What I Bring</h3>
+        <div class="sm-row"><span class="sm-chk">✓</span><span class="sm-txt">10+ years across Conduent, Concentrix, Coast Capital, Hootsuite — contact centre and financial services</span></div>
+        <div class="sm-row"><span class="sm-chk">✓</span><span class="sm-txt">Built scheduling engine, Erlang C calculator, AI forecasting pipeline, and coverage heatmap in Shedula.io from scratch</span></div>
+        <div class="sm-row"><span class="sm-chk">✓</span><span class="sm-txt">GPT-4 Vision RTA agent + Claude API WFM bot + Hootsuite Claude Opus 4.8 bot — all in production</span></div>
+        <div class="sm-row"><span class="sm-chk">✓</span><span class="sm-txt">Built Shedula REST API, HMAC-signed webhooks, inbound receivers for Zendesk/Five9/Genesys</span></div>
+        <div class="sm-row"><span class="sm-chk">✓</span><span class="sm-txt">Setting WFM tech direction at Hootsuite (5 analysts); mentored 50+ analysts at Concentrix</span></div>
+        <div class="sm-row"><span class="sm-chk">✓</span><span class="sm-txt">NICE IEX v7.1 deployed at enterprise scale — data schemas, API limits, integration architecture known</span></div>
+        <div class="sm-row"><span class="sm-chk">✓</span><span class="sm-txt">Power BI + Power Query → exec dashboards; 2h → 10min pipeline at Concentrix (50+ analysts)</span></div>
+        <div class="sm-row"><span class="sm-chk">✓</span><span class="sm-txt">Coast Capital (Canadian financial institution) + Shedula PIPEDA/GDPR-compliant, full RLS audit</span></div>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- FOOTER -->
+<footer>
+  <div class="footer-left">
+    Andre Mendes · Lead, WFM Platform &amp; Automation · Wealthsimple Interview Portfolio<br>
+    <a href="mailto:andremanentem@gmail.com">andremanentem@gmail.com</a> ·
+    <a href="tel:+17782550144">778 255 0144</a>
+  </div>
+  <div style="display:flex;gap:10px;flex-wrap:wrap;">
+    <a href="https://www.linkedin.com/in/andremendes-2610" target="_blank" class="fbtn">LinkedIn →</a>
+    <a href="https://shedula.io" target="_blank" class="fbtn">Shedula.io →</a>
+    <a href="https://super-forecast.streamlit.app" target="_blank" class="fbtn">Super Forecaster →</a>
+    <a href="https://andremendes92.github.io/andre-mendes-wfm" target="_blank" class="fbtn">Full Portfolio →</a>
+  </div>
+</footer>
+
+<script>
+/* NAV scroll shadow */
+window.addEventListener('scroll', () => {
+  document.getElementById('main-nav').classList.toggle('scrolled', window.scrollY > 10)
+})
+
+/* Smooth scroll */
+document.querySelectorAll('a[href^="#"]').forEach(a => {
+  a.addEventListener('click', e => {
+    e.preventDefault()
+    document.querySelector(a.getAttribute('href'))?.scrollIntoView({ behavior:'smooth' })
+  })
+})
+
+/* Tab switching */
+function showTab(id) {
+  document.querySelectorAll('.stab').forEach((t,i) => {
+    t.classList.toggle('active', ['rta','superforecast','shedula-forecast','powerbi','shedula','hootsuite'][i] === id)
+  })
+  document.querySelectorAll('.spanel').forEach(p => {
+    p.classList.toggle('active', p.id === 'tab-' + id)
+  })
+  if (id === 'rta') startTicker()
+}
+
+/* Flow node builder */
+function buildFlow(containerId, nodes, colors) {
+  const c = document.getElementById(containerId)
+  if (!c || c.children.length > 0) return
+  nodes.forEach((n, i) => {
+    const div = document.createElement('div')
+    div.className = 'fnode' + (n.pulse ? ' pulse' : '')
+    div.style.borderTop = `3px solid ${colors[n.color]}`
+    div.style.animationDelay = (i * 0.1) + 's'
+    div.innerHTML = `<div class="fnode-icon">${n.icon}</div><div class="fnode-lbl">${n.label}</div>${n.sub ? `<div class="fnode-sub">${n.sub}</div>` : ''}`
+    c.appendChild(div)
+    if (i < nodes.length - 1) {
+      const arr = document.createElement('span')
+      arr.className = 'farrow'
+      arr.textContent = '→'
+      c.appendChild(arr)
+    }
+  })
+}
+
+const C = {
+  accent: '#c8763a', blue: '#2563eb', green: '#2ea052', purple: '#7c3aed'
+}
+
+buildFlow('flow-rta', [
+  { icon:'⏱️', label:'Task Scheduler', sub:'Fires every X min\nWindows cron', color:'accent', pulse:true },
+  { icon:'📸', label:'Screenshot', sub:'.NET Forms+Drawing\nFull-screen PNG', color:'accent' },
+  { icon:'🔢', label:'Base64 Encode', sub:'Image → string\nAPI payload', color:'blue' },
+  { icon:'🧠', label:'GPT-4 Vision', sub:'Extracts per-LOB\ncalls + wait time', color:'blue', pulse:true },
+  { icon:'✅', label:'Regex Validate', sub:'Format check\nbefore processing', color:'blue' },
+  { icon:'⚖️', label:'Threshold Logic', sub:'Per-LOB rules\nongoing/resolved', color:'green' },
+  { icon:'📋', label:'State Tracker', sub:'alert.txt\n>30min → escalate', color:'green' },
+  { icon:'📣', label:'M365 Alert', sub:'Teams message\n+ log rotation', color:'purple', pulse:true },
+], C)
+
+buildFlow('flow-superforecast', [
+  { icon:'🗄️', label:'StatCan API', sub:'Vector ID input\nReal monthly data\nfree, no key', color:'blue', pulse:true },
+  { icon:'🏠', label:'Repliers MLS', sub:'Sold-price stats\nby city/type\nsandbox key', color:'blue' },
+  { icon:'⚙️', label:'FastAPI Backend', sub:'forecast_engine.py\ndata_sources/\nstatcan + repliers', color:'accent', pulse:true },
+  { icon:'📐', label:'4 Models Run', sub:'Holt-Winters\nARIMA / Linear\nMoving Average', color:'accent' },
+  { icon:'🌐', label:'Render Host', sub:'Backend API\nfree tier\nno cold start', color:'green' },
+  { icon:'☁️', label:'Streamlit Cloud', sub:'Frontend UI\nsuper-forecast\n.streamlit.app', color:'green', pulse:true },
+], C)
+
+buildFlow('flow-shedula-forecast', [
+  { icon:'📂', label:'CSV Upload', sub:'date/channel\nvolume/AHT\nper interval', color:'accent', pulse:true },
+  { icon:'🔍', label:'Analysis Engine', sub:'Linear regression\nAutocorr lag 7\nCoeff. of variation', color:'accent' },
+  { icon:'🧠', label:'Auto-Detection', sub:'Picks best method\nplain-English\nexplanation', color:'blue', pulse:true },
+  { icon:'📐', label:'Forecast Runs', sub:'3/6/12 month\nhorizons\nfull auto-apply', color:'blue' },
+  { icon:'📅', label:'Erlang C', sub:'Volume × AHT\n÷ 1800 → agents\nper interval', color:'green' },
+  { icon:'💾', label:'DB Write', sub:'coverage_requirements\nper queue replaced\nscheduling-ready', color:'purple', pulse:true },
+], C)
+
+buildFlow('flow-shedula', [
+  { icon:'📋', label:'Coverage Reqs', sub:'Erlang C output\nper 30-min interval', color:'accent', pulse:true },
+  { icon:'🚫', label:'Time-Off Check', sub:'Skip approved\noff dates', color:'accent' },
+  { icon:'⚖️', label:'Gap Analysis', sub:'Required −\nscheduled HC', color:'blue' },
+  { icon:'🎯', label:'Greedy Assign', sub:'Gaps first\nthen preferences', color:'blue', pulse:true },
+  { icon:'🔐', label:'Publish Gate', sub:'Draft → Published\nmanager controls', color:'green' },
+  { icon:'📅', label:'Weekly Gantt', sub:'Live heatmap\n+ Excel export', color:'purple', pulse:true },
+], C)
+
+buildFlow('flow-hootsuite', [
+  { icon:'📊', label:'Salesforce CRM', sub:'Ticket volumes\ncase types\ndemand signals', color:'blue', pulse:true },
+  { icon:'🔌', label:'Salesforce MCP', sub:'Live data bridge\nto Claude context', color:'blue' },
+  { icon:'🧠', label:'Claude Opus 4.8', sub:'Fuses CRM +\nWFM context', color:'accent', pulse:true },
+  { icon:'⚙️', label:'Skills + Workflows', sub:'Multi-step logic\norchestration layer', color:'accent' },
+  { icon:'🔌', label:'Slack MCP', sub:'Pushes recs\nwhere team works', color:'green' },
+  { icon:'✅', label:'WFM Action', sub:'Coverage gaps\nflagged + decisions', color:'green', pulse:true },
+], C)
+
+/* Ticker */
+const LOGS = [
+  '[08:32:01] Task Scheduler fired — capturing screen...',
+  '[08:32:02] Screenshot saved → latest.png (1920x1080)',
+  '[08:32:02] Encoding image to Base64 (2.3MB)...',
+  '[08:32:03] Sending to GPT-4 Vision API...',
+  '[08:32:05] GPT response received — validating format...',
+  '[08:32:05] ✓ Format valid. Parsing LOB data...',
+  '[08:32:05] LOB1: 8 calls | 6.2 min wait → OK',
+  '[08:32:05] LOB2: 3 calls | 4.1 min wait → OK',
+  '[08:32:05] LOB3: 7 calls | 22.4 min wait → ⚠ BREACH',
+  '[08:32:06] State: NEW alert — writing to alert.txt',
+  '[08:32:06] ✓ M365 Teams alert sent for LOB3',
+  '[08:32:06] Logging interval to history.csv...',
+  '[08:47:02] LOB3: 2 calls | 3.1 min wait → RESOLVED',
+  '[08:47:02] ✓ Normalization message sent. Next run in 5 min...',
+]
+let tickerIdx = 0, tickerIv = null
+function startTicker() {
+  const el = document.getElementById('ticker-text')
+  if (!el) return
+  el.textContent = ''
+  tickerIdx = 0
+  clearInterval(tickerIv)
+  tickerIv = setInterval(() => {
+    if (tickerIdx < LOGS.length) {
+      el.textContent += (tickerIdx > 0 ? '\n' : '') + LOGS[tickerIdx++]
+    } else clearInterval(tickerIv)
+  }, 480)
+}
+startTicker()
+</script>
+</body>
 </html>
